@@ -2,13 +2,13 @@ const {
   getAllBooks,
   getBookById,
   createBook,
+  editBookById,
 } = require('../services/books.service');
 const { SuccessResponse, FailResponse } = require('../utils/responseHelper');
 
 async function getAllBooksHandler(req, h) {
-  const result = await getAllBooks();
-
-  if (result) {
+  try {
+    const result = await getAllBooks();
     return h
       .response(
         new SuccessResponse({
@@ -16,8 +16,9 @@ async function getAllBooksHandler(req, h) {
         }),
       )
       .code(200);
+  } catch (error) {
+    return h.response('Fail').code(500);
   }
-  return h.response('Fail');
 }
 
 async function getBookByIdHandler(req, h) {
@@ -36,9 +37,8 @@ async function getBookByIdHandler(req, h) {
 async function createBookHandler(req, h) {
   const { payload } = req;
 
-  const result = await createBook(payload);
-
-  if (result) {
+  try {
+    const result = await createBook(payload);
     return h
       .response(
         new SuccessResponse({
@@ -47,12 +47,27 @@ async function createBookHandler(req, h) {
         }),
       )
       .code(201);
+  } catch (error) {
+    return h.response('Fail').code(500);
   }
-  return h.response('Fail');
 }
 
-function editBookByIdHandler(req, h) {
-  return h.response('book edited');
+async function editBookByIdHandler(req, h) {
+  const { bookId } = req.params;
+  const { payload } = req;
+
+  try {
+    await editBookById(bookId, payload);
+    return h
+      .response(new SuccessResponse({ message: 'Buku berhasil diperbarui' }))
+      .code(200);
+  } catch (error) {
+    return h
+      .response(
+        new FailResponse({ message: 'Gagal memperbarui. Id tidak ditemukan' }),
+      )
+      .code(404);
+  }
 }
 
 function deleteBookByIdHandler(req, h) {

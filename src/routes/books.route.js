@@ -6,7 +6,10 @@ const {
   editBookByIdHandler,
   deleteBookByIdHandler,
 } = require('../handler/books.handler');
-const { createBookValidation } = require('../validations/booksValidation');
+const {
+  createBookValidation,
+  editBookValidation,
+} = require('../validations/booksValidation');
 const failActionHandler = require('../handler/failActionHandler');
 
 const routes = [
@@ -47,6 +50,15 @@ const routes = [
     path: '/books/{bookId}',
     method: 'PUT',
     handler: editBookByIdHandler,
+    options: {
+      validate: {
+        options: {
+          allowUnknown: true,
+        },
+        payload: editBookValidation,
+        failAction: failActionHandler,
+      },
+    },
   },
   {
     path: '/books/{bookId}',

@@ -19,4 +19,14 @@ Content-Type: : application/json
 
 ###
 
-GET http://localhost:3000/books/uUyvWeAcdG0s4WhF HTTP/1.1
+GET http://localhost:3000/books/82dPb-4DGtE8IpgM HTTP/1.1
+
+###
+PUT http://localhost:3000/books/ClivrvmTOL9gyYgI HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "GG",
+  "pageCount": 200,
+  "readPage": 177
+}

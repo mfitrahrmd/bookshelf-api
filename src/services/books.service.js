@@ -67,7 +67,40 @@ function createBook({
   });
 }
 
-function editBookById() {}
+function editBookById(
+  bookId,
+  // eslint-disable-next-line object-curly-newline
+  { name, year, author, summary, publisher, pageCount, readPage, reading },
+) {
+  return new Promise((resolve, reject) => {
+    const DATE = new Date().toISOString();
+    const bookIndex = books.findIndex((val) => val.id === bookId);
+
+    if (bookIndex < 0) {
+      reject();
+    }
+
+    let bookData = {
+      name,
+      year,
+      author,
+      summary,
+      publisher,
+      pageCount,
+      readPage,
+      reading,
+      updatedAt: DATE,
+    };
+
+    bookData = Object.fromEntries(
+      Object.entries(bookData).filter((val) => val[1]),
+    ); // remove object properties with no value
+
+    books[bookIndex] = { ...books[bookIndex], ...bookData };
+
+    resolve();
+  });
+}
 
 function deleteBookById() {}
 
