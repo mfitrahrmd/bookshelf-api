@@ -1,12 +1,36 @@
-const { createBook } = require('../services/books.service');
-const { SuccessResponse } = require('../utils/responseHelper');
+const {
+  getAllBooks,
+  getBookById,
+  createBook,
+} = require('../services/books.service');
+const { SuccessResponse, FailResponse } = require('../utils/responseHelper');
 
 async function getAllBooksHandler(req, h) {
-  return h.response('books');
+  const result = await getAllBooks();
+
+  if (result) {
+    return h
+      .response(
+        new SuccessResponse({
+          data: result,
+        }),
+      )
+      .code(200);
+  }
+  return h.response('Fail');
 }
 
-function getBookByIdHandler(req, h) {
-  return h.response('book');
+async function getBookByIdHandler(req, h) {
+  const { bookId } = req.params;
+
+  try {
+    const result = await getBookById(bookId);
+    return h.response(new SuccessResponse({ data: result })).code(200);
+  } catch (error) {
+    return h
+      .response(new FailResponse({ message: 'Buku tidak ditemukan' }))
+      .code(404);
+  }
 }
 
 async function createBookHandler(req, h) {

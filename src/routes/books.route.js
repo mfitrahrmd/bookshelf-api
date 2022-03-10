@@ -35,6 +35,9 @@ const routes = [
     handler: createBookHandler,
     options: {
       validate: {
+        options: {
+          allowUnknown: true,
+        },
         payload: createBookValidation,
         failAction: failActionHandler,
       },

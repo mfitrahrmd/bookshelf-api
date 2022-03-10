@@ -1,13 +1,31 @@
-// Core Modules
-const fs = require('fs');
 // Third-Party Modules
 const { nanoid } = require('nanoid');
 // Local Modules
 const books = require('../data/books');
 
-function getAllBooks() {}
+function getAllBooks() {
+  return new Promise((resolve, reject) => {
+    const isSuccess = books;
 
-function getBookById() {}
+    if (isSuccess) {
+      resolve({ books });
+    } else {
+      reject();
+    }
+  });
+}
+
+function getBookById(bookId) {
+  return new Promise((resolve, reject) => {
+    const book = books.find((val) => val.id === bookId);
+
+    if (book) {
+      resolve({ book });
+    } else {
+      reject();
+    }
+  });
+}
 
 function createBook({
   name,
