@@ -5,10 +5,14 @@ const books = require('../data/books');
 
 function getAllBooks() {
   return new Promise((resolve, reject) => {
-    const isSuccess = books;
+    const allBooks = books.map((val) => ({
+      id: val.id,
+      name: val.name,
+      publisher: val.publisher,
+    }));
 
-    if (isSuccess) {
-      resolve({ books });
+    if (allBooks) {
+      resolve({ books: allBooks });
     } else {
       reject();
     }

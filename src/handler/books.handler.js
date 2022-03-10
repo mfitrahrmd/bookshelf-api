@@ -65,7 +65,9 @@ async function editBookByIdHandler(req, h) {
   } catch (error) {
     return h
       .response(
-        new FailResponse({ message: 'Gagal memperbarui. Id tidak ditemukan' }),
+        new FailResponse({
+          message: 'Gagal memperbarui buku. Id tidak ditemukan',
+        }),
       )
       .code(404);
   }
@@ -83,7 +85,7 @@ async function deleteBookByIdHandler(req, h) {
     return h
       .response(
         new FailResponse({
-          message: 'Buku gagal diperbarui. Id tidak ditemukan',
+          message: 'Buku gagal dihapus. Id tidak ditemukan',
         }),
       )
       .code(404);
