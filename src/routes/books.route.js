@@ -1,3 +1,4 @@
+// Local Modules
 const {
   getAllBooksHandler,
   getBookByIdHandler,
@@ -5,6 +6,8 @@ const {
   editBookByIdHandler,
   deleteBookByIdHandler,
 } = require('../handler/books.handler');
+const { createBookValidation } = require('../validations/booksValidation');
+const failActionHandler = require('../handler/failActionHandler');
 
 const routes = [
   {
@@ -30,6 +33,12 @@ const routes = [
     path: '/books',
     method: 'POST',
     handler: createBookHandler,
+    options: {
+      validate: {
+        payload: createBookValidation,
+        failAction: failActionHandler,
+      },
+    },
   },
   {
     path: '/books/{bookId}',

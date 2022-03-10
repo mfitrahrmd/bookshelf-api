@@ -3,12 +3,6 @@ Content-Type: application/json
 
 {
   "name": "Theory of Everything",
-  "year": 2010,
-  "author": "Stephen Hawking",
-  "summary": "An excellent astrophysics student working on his research",
-  "publisher": "Wikipedia",
   "pageCount": 100,
-  "readPage": 78,
-  "reading": false,
-  "GG": "GG"
+  "readPage": 101
 }
