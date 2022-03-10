@@ -9,6 +9,6 @@
     "ecmaVersion": "latest"
   },
   "rules": {
-    "max-classes-per-file": ["off"]
+    "arrow-body-style": ["error", "always"]
   }
 }
