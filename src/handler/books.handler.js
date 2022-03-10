@@ -3,6 +3,7 @@ const {
   getBookById,
   createBook,
   editBookById,
+  deleteBookById,
 } = require('../services/books.service');
 const { SuccessResponse, FailResponse } = require('../utils/responseHelper');
 
@@ -70,8 +71,23 @@ async function editBookByIdHandler(req, h) {
   }
 }
 
-function deleteBookByIdHandler(req, h) {
-  return h.response('book deleted');
+async function deleteBookByIdHandler(req, h) {
+  const { bookId } = req.params;
+
+  try {
+    await deleteBookById(bookId);
+    return h
+      .response(new SuccessResponse({ message: 'Buku berhasil dihapus' }))
+      .code(200);
+  } catch (error) {
+    return h
+      .response(
+        new FailResponse({
+          message: 'Buku gagal diperbarui. Id tidak ditemukan',
+        }),
+      )
+      .code(404);
+  }
 }
 module.exports = {
   getAllBooksHandler,

@@ -74,6 +74,7 @@ function editBookById(
 ) {
   return new Promise((resolve, reject) => {
     const DATE = new Date().toISOString();
+    const FINISHED = pageCount === readPage;
     const bookIndex = books.findIndex((val) => val.id === bookId);
 
     if (bookIndex < 0) {
@@ -89,6 +90,7 @@ function editBookById(
       pageCount,
       readPage,
       reading,
+      finished: FINISHED,
       updatedAt: DATE,
     };
 
@@ -102,7 +104,21 @@ function editBookById(
   });
 }
 
-function deleteBookById() {}
+function deleteBookById(bookId) {
+  return new Promise((resolve, reject) => {
+    const bookIndex = books.findIndex((val) => val.id === bookId);
+
+    if (bookIndex < 0) {
+      reject();
+    }
+
+    const isSuccess = books.splice(bookIndex, 1);
+
+    if (isSuccess) {
+      resolve();
+    }
+  });
+}
 
 module.exports = {
   getAllBooks,

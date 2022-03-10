@@ -8,7 +8,7 @@ Content-Type: application/json
   "summary": "An excellent astrophysics student working on his research",
   "publisher": "Wikipedia",
   "pageCount": 100,
-  "readPage": 78,
+  "readPage": 10,
   "reading": false
 }
 
@@ -19,14 +19,24 @@ Content-Type: : application/json
 
 ###
 
-GET http://localhost:3000/books/82dPb-4DGtE8IpgM HTTP/1.1
+GET http://localhost:3000/books/v4XTxQ2_27r14bPG HTTP/1.1
 
 ###
-PUT http://localhost:3000/books/ClivrvmTOL9gyYgI HTTP/1.1
+PUT http://localhost:3000/books/v4XTxQ2_27r14bPG HTTP/1.1
 Content-Type: application/json
 
 {
   "name": "GG",
-  "pageCount": 200,
-  "readPage": 177
+  "year": "6666",
+  "author": "GG",
+  "summary": "GG",
+  "publisher": "GG",
+  "pageCount": 66,
+  "readPage": 66,
+  "reading":true
+
 }
+
+###
+
+DELETE http://localhost:3000/books/v4XTxQ2_27r14bPG HTTP/1.1
