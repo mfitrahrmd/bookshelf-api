@@ -1,0 +1,35 @@
+{
+  "name": "bookshelf-api",
+  "version": "1.0.0",
+  "description": "Final project of \\\"Belajar Membuat Aplikasi Back-End untuk Pemula\\\" course provide by DTS FGA & Dicoding Indonesia.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfitrahrmd420/bookshelf-api.git"
+  },
+  "keywords": [
+    "backend",
+    "rest-api",
+    "api",
+    "hapi",
+    "hapi.js"
+  ],
+  "author": "M Fitrah Ramadhan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mfitrahrmd420/bookshelf-api/issues"
+  },
+  "homepage": "https://github.com/mfitrahrmd420/bookshelf-api#readme",
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1"
+  }
+}
