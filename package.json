@@ -4,10 +4,9 @@
   "description": "Final project of \\\"Belajar Membuat Aplikasi Back-End untuk Pemula\\\" course provide by DTS FGA & Dicoding Indonesia.",
   "main": "./src/index.js",
   "scripts": {
-    "test": "jest",
     "lint": "eslint **/*.js",
     "dev": "nodemon ./src/index.js",
-    "start": "node ./src/index.js"
+    "start": "npm run lint && node ./src/index.js"
   },
   "repository": {
     "type": "git",
