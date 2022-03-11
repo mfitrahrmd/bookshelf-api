@@ -19,6 +19,9 @@ const server = () => {
   const hapiServer = Hapi.server({
     host: HOST,
     port: PORT,
+    routes: {
+      cors: true,
+    },
   });
 
   hapiServer.route([...books, notfoundRoute]);
