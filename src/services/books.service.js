@@ -3,18 +3,62 @@ const { nanoid } = require('nanoid');
 // Local Modules
 const books = require('../data/books');
 
-function getAllBooks() {
-  return new Promise((resolve, reject) => {
+function getAllBooks(query) {
+  return new Promise((resolve) => {
+    const { name, reading, finished } = query;
+
     const allBooks = books.map((val) => ({
       id: val.id,
       name: val.name,
       publisher: val.publisher,
     }));
 
-    if (allBooks) {
-      resolve({ books: allBooks });
+    let filteredBooks;
+
+    if (name) {
+      filteredBooks = books
+        .filter((val) => {
+          return val.name.toLowerCase().includes(name.toLowerCase());
+        })
+        .map((val) => ({
+          id: val.id,
+          name: val.name,
+          publisher: val.publisher,
+        }));
+
+      resolve({ books: filteredBooks });
+    } else if (reading) {
+      filteredBooks = books
+        .filter((val) => {
+          return val.reading == reading;
+        })
+        .map((val) => ({
+          id: val.id,
+          name: val.name,
+          publisher: val.publisher,
+        }));
+
+      // eslint-disable-next-line no-unused-expressions
+      filteredBooks.length
+        ? resolve({ books: filteredBooks })
+        : resolve({ books: allBooks });
+    } else if (finished) {
+      filteredBooks = books
+        .filter((val) => {
+          return val.finished == finished;
+        })
+        .map((val) => ({
+          id: val.id,
+          name: val.name,
+          publisher: val.publisher,
+        }));
+
+      // eslint-disable-next-line no-unused-expressions
+      filteredBooks.length
+        ? resolve({ books: filteredBooks })
+        : resolve({ books: allBooks });
     } else {
-      reject();
+      resolve({ books: allBooks });
     }
   });
 }

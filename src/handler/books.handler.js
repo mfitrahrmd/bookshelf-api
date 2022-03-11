@@ -8,8 +8,10 @@ const {
 const { SuccessResponse, FailResponse } = require('../utils/responseHelper');
 
 async function getAllBooksHandler(req, h) {
+  const { query } = req;
+
   try {
-    const result = await getAllBooks();
+    const result = await getAllBooks(query);
     return h
       .response(
         new SuccessResponse({

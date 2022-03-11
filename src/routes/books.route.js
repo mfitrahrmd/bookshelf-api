@@ -13,6 +13,7 @@ const {
 const failActionHandler = require('../handler/failActionHandler');
 
 const routes = [
+  // Welcome route
   {
     path: '/',
     method: '*',
@@ -22,16 +23,19 @@ const routes = [
       });
     },
   },
+  // Get all books
   {
     path: '/books',
     method: 'GET',
     handler: getAllBooksHandler,
   },
+  // Get book
   {
     path: '/books/{bookId}',
     method: 'GET',
     handler: getBookByIdHandler,
   },
+  // Create book
   {
     path: '/books',
     method: 'POST',
@@ -46,6 +50,7 @@ const routes = [
       },
     },
   },
+  // Edit book
   {
     path: '/books/{bookId}',
     method: 'PUT',
@@ -60,6 +65,7 @@ const routes = [
       },
     },
   },
+  // Delete book
   {
     path: '/books/{bookId}',
     method: 'DELETE',

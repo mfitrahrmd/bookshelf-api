@@ -37,4 +37,10 @@ const editBookValidation = Joi.object().keys({
   reading: Joi.boolean(),
 });
 
-module.exports = { createBookValidation, editBookValidation };
+const queryValidation = Joi.object().keys({
+  name: Joi.optional(),
+  reading: Joi.optional(),
+  finished: Joi.optional(),
+});
+
+module.exports = { createBookValidation, editBookValidation, queryValidation };
