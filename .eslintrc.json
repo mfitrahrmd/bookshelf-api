@@ -10,6 +10,7 @@
   },
   "rules": {
     "arrow-body-style": ["off"],
-    "eqeqeq": ["off"]
+    "eqeqeq": ["off"],
+    "linebreak-style": ["off", "windows"]
   }
 }
